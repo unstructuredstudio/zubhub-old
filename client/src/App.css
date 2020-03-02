@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 15vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #fdeaed;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-bottom: 20px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.video-gallery {
+  margin: 50px;
+}
+.video-item {
+  float: left;
+  width: 330px;
+  height: 190px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  background-color: #fdeaed;
+  border: 10px solid #fdeaed;
+}
