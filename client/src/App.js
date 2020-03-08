@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.png';
 import './App.css';
 import VideoGallery from './VideoGallery';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
