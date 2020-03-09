@@ -23,4 +23,22 @@ module.exports = (app) => {
         return res.status(200).send(body['data']);
     })
   });
+
+  app.get(`/api/uploadToken/:id`, async (req, res) => {
+    const {id} = req.params;
+
+    // TODO: This is security by obscurity (bad!). Need to replace later on by pinned device certificates/user identity.
+    // For production, replace 'ZUB' with unique/hidden env identifier in Zub as well as ZubHub.
+    let APP_ID = id.split(":")[0];
+    if (APP_ID === 'ZUB') {
+      return res.status(200).send({
+        'clientId': process.env.VIMEO_CLIENT_ID,
+        'clientSecret': process.env.VIMEO_CLIENT_SECRET,
+        'accessToken': process.env.VIMEO_ACCESS_TOKEN
+      })      
+    } else {
+      return res.status(401).send('Unauthorized')
+    }
+  });
+  
 }

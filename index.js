@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
-require('./routes/fetchVideos')(app);
+require('./routes/videos')(app);
 
 //const mongoose = require('mongoose');
 //mongoose.Promise = global.Promise;
