@@ -53,6 +53,10 @@
   padding: 3px 10px 5px 10px;
 }
 
+.video-page {
+  margin: 50px;
+}
+
 .back-button {
   background: #CEBB41;
   border: none;
