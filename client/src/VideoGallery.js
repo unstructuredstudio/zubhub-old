@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import Vimeo from '@u-wave/react-vimeo';
 import videoService from './services/videoService';
 import history from './History';
+import {Row, Container, Col} from 'react-bootstrap';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faExternalLinkAlt, faEye} from '@fortawesome/free-solid-svg-icons';
 
 
 function VideoGallery() {
@@ -21,10 +24,7 @@ function VideoGallery() {
   const renderVideo = (video) => {
     const id = video.uri.substring(8);
     return (
-      <div key={id} className="video-item" onClick={() => history.push(
-          '/video/' + id,
-          {video: video},
-      )}>
+      <div key={id} className="video-item">
         <Vimeo
           video={id}
           showTitle={false}
@@ -32,15 +32,29 @@ function VideoGallery() {
           color='fdeaed'
           showByline={false}
           controls={false}
-          width={330}
-          height={190}
+          width={312}
+          height={185}
         />
+        <Row>
+          <Col>
+            <p><FontAwesomeIcon icon={faEye} /> {video.stats.plays} views</p>
+          </Col>
+          <Col>
+            <p className="video-url">
+              <a onClick={() => history.push(
+                  '/video/' + id,
+                  {video: video},
+              )}> View project </a>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </p>
+          </Col>
+        </Row>
       </div>
     );
   };
 
   return (
-    <div className="video-gallery">
+    <Container className="video-gallery">
       <div className="videos">
         {(videos!= null && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
@@ -48,7 +62,7 @@ function VideoGallery() {
         <p>No videos found</p>
       )}
       </div>
-    </div>
+    </Container>
   );
 }
 export default VideoGallery;

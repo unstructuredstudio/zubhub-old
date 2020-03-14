@@ -49,7 +49,8 @@ function VideoPage() {
       {(videoObject && videoObject !== null) &&
       <div className="video-info-box">
         <h1 className="title">{videoObject.name}</h1>
-        <p className="created">Uploaded on {videoObject.created_time}</p>
+        <p className="created">{videoObject.stats.plays} views | Uploaded on
+          {videoObject.created_time}</p>
         <h3 className="username">{videoObject.user.name}</h3>
         <p className="description">{videoObject.description}</p>
         <span className="tags">{videoObject.tags.tag}</span>
