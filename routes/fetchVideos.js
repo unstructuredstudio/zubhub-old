@@ -31,7 +31,11 @@ module.exports = (app) => {
 
 	app.get("/api/videos", async(req, res) => {
 		let videos = await fetchVideos();
-		return res.status(200).send(videos);
+		if(videos) {
+			return res.status(200).send(videos);
+		} else {
+			return res.status(401).send("Something is weird");
+		}
 	});  
 };
 
@@ -45,14 +49,19 @@ async function fetchVideos() {
 
 	return videos;
 
-	//TODO Investigate why the video data is not returned properly
 	//Uncomment the code below to pull results from the Vimeo API
-	// await vimeoClient.request({
-	// 	method: "GET",
-	// 	path: "/me/videos"
-	// }, function (error, body) {
-	// 	if (!error) {
-	// 		return body["data"];  
-	// 	}
+	// const videos = await new Promise((resolve, reject) => {
+	// 	vimeoClient.request({
+	// 		method: "GET",
+	// 		path: "/me/videos"
+	// 	}, 
+	// 	function (error, body) {
+	// 		if(error) {
+	// 			reject(error);
+	// 			return;
+	// 		}
+	// 		resolve(body["data"]);
+	// 	});
 	// });
+	// return videos;
 }

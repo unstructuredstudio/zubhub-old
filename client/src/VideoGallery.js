@@ -59,7 +59,7 @@ function VideoGallery() {
         {(videos!= null && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (
-        <p>No videos found</p>
+        <p>Loading...</p>
       )}
       </div>
     </Container>
