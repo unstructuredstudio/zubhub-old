@@ -53,7 +53,9 @@ function VideoPage() {
           {videoObject.created_time}</p>
         <h3 className="username">{videoObject.user.name}</h3>
         <p className="description">{videoObject.description}</p>
-        <span className="tags">{videoObject.tags.tag}</span>
+        {videoObject.tags.map((item, index) => {
+          return <span key={'tag-' + index} className="tags">{item.tag}</span>;
+        })}
       </div>
       }
     </div>
