@@ -49,7 +49,7 @@ async function fetchVideos() {
 
 	return videos;
 
-	//Uncomment the code below to pull results from the Vimeo API
+	//Comment the code above and uncomment the one below to pull results from the Vimeo API
 	// const videos = await new Promise((resolve, reject) => {
 	// 	vimeoClient.request({
 	// 		method: "GET",

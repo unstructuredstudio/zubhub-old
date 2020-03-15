@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Vimeo from '@u-wave/react-vimeo';
 import videoService from './services/videoService';
 import history from './History';
 import {Row, Container, Col} from 'react-bootstrap';
@@ -25,16 +24,11 @@ function VideoGallery() {
     const id = video.uri.substring(8);
     return (
       <div key={id} className="video-item">
-        <Vimeo
-          video={id}
-          showTitle={false}
-          showPortrait={false}
-          color='fdeaed'
-          showByline={false}
-          controls={false}
-          width={312}
-          height={185}
-        />
+        <iframe title="vimeo-player"
+          src={'https://player.vimeo.com/video/' + id}
+          frameBorder="0"
+        >
+        </iframe>
         <Row>
           <Col>
             <p><FontAwesomeIcon icon={faEye} /> {video.stats.plays} views</p>
