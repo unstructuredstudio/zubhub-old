@@ -12,7 +12,8 @@ function VideoPage() {
   const location = useLocation();
   const {id} = useParams();
   const tempObj = location && location.state && location.state.video;
-  const [videoObject, setVideoObject] = useState(tempObj ? tempObj : null);
+  const [videoObject, setVideoObject] = useState(null);
+  //const [videoObject, setVideoObject] = useState(tempObj ? tempObj : null);
 
   useEffect(() => {
     if (!videoObject) {
@@ -22,7 +23,7 @@ function VideoPage() {
 
   const getVideoObject = async () => {
     const res = await videoService.getVideo(id);
-    setVideoObject(res[0]);
+    setVideoObject(res);
   };
 
   return (
@@ -31,7 +32,7 @@ function VideoPage() {
       <p>No video found :-(</p>
       }
       <Row>
-        <Col className="button-box" lg={3} xs={12}>
+        <Col className="button-box" lg={4} xs={12}>
           <Button bsPrefix="super-btn" className="back-button" variant="primary"
             onClick={() => history.push('/')}>Back to Video Gallery</Button>
         </Col>
@@ -39,7 +40,7 @@ function VideoPage() {
 
       {(videoObject && videoObject !== null) &&
       <Row>
-        <Col className="video-box" xs={9}>
+        <Col className="video-box" xs={7}>
           <Vimeo
             video={videoObject.uri.substring(8)}
             showTitle={false}
@@ -47,7 +48,7 @@ function VideoPage() {
             color='fdeaed'
             showByline={false}
             controls={false}
-            width={835}
+            width={680}
           />
         </Col>
       </Row>
@@ -55,7 +56,7 @@ function VideoPage() {
 
       {(videoObject && videoObject !== null) &&
       <Row>
-        <Col className="video-info-box" xs={9}>
+        <Col className="video-info-box" lg={7} sm={11} md={12} xs={9}>
           <h1 className="title">{videoObject.name}</h1>
           <p className="created">{videoObject.stats.plays} views | Uploaded on
             {videoObject.created_time}</p>
@@ -65,7 +66,7 @@ function VideoPage() {
             return <span key={'tag-' + index} className="tags">{item.tag}
             </span>;
           })}
-          <Comments></Comments>
+          <Comments commentsObj={videoObject.comments}></Comments>
         </Col>
       </Row>
       }

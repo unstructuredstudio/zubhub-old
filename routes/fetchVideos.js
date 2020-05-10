@@ -1,5 +1,6 @@
-// const mongoose = require('mongoose');
-// const Product = mongoose.model('products');
+const mongoose = require('mongoose');
+const Comment = mongoose.model('comments');
+
 const Vimeo = require("vimeo").Vimeo;
 require("dotenv").config();
 
@@ -17,6 +18,7 @@ module.exports = (app) => {
 			videoObj = "";
     
 		let videos = await fetchVideos();
+		let commentsObj = await Comment.find({});
 
 		if(videos) {
 			for (v in videos) {
@@ -26,11 +28,14 @@ module.exports = (app) => {
 				}
 			}      
 		}
+
+		videoObj['comments'] = commentsObj
 		return res.status(200).send(videoObj);
 	});
 
 	app.get("/api/videos", async(req, res) => {
 		let videos = await fetchVideos();
+
 		if(videos) {
 			return res.status(200).send(videos);
 		} else {
