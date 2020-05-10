@@ -51,11 +51,18 @@ p.video-url {
   margin-top: 10px;
 }
 
+.video-info-box .created {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+}
+
 .video-info-box .tags {
   background: #fdeaed;
   margin-right: 10px;
   border-radius: 2px;
   padding: 3px 10px 5px 10px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .video-page {
@@ -94,4 +101,128 @@ p.video-url {
     width: 350px;
     height: 200px;
   }
+}
+
+/* Comments component style */
+.comments-container {
+  margin: 20px 0px 20px 0;
+  border-top: 1px solid lightgray;
+}
+
+.comments-container h4 {
+  margin-top: 10px;
+}
+
+.post-as-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px;
+}
+
+.username-label {
+  padding: 0px;
+}
+
+.username-label p {
+  margin: 0px;
+  line-height: 50px;
+}
+
+.username-input {
+  border-radius: 8px;
+  background-color: #fdeaed;
+}
+
+.post-as-row input {
+  width: 100%;
+  height: 40px;
+  padding: 12px 0px 8px 0px;
+  border: none;
+  background-color: transparent;
+  color: #282828;
+  outline: none;
+  box-shadow: 0px 4px 20px 0px transparent;
+  transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
+    0.1s padding ease-in-out;
+  -webkit-appearance: none;
+}
+
+.comment-input {
+  border-radius: 10px;
+  background-color: #fdeaed;
+}
+
+.comment-input textarea {
+  resize: none;
+  width: 100%;
+  height: 85px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: #282828;
+  outline: none;
+  box-shadow: 0px 4px 20px 0px transparent;
+  transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
+    0.1s padding ease-in-out;
+  -webkit-appearance: none;
+}
+
+.publish-btn-chars-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-box {
+  padding: 0px;
+  margin-bottom: 15px;
+}
+
+.btn-box .publish-button {
+  width: 100%;
+  background: #CEBB41;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  padding: 5px 10px 5px 10px;
+}
+
+.chars-box {
+  padding: 0px;
+  text-align: right;
+}
+
+.chars-box {
+  line-height: 10px;
+}
+
+.posted-by {
+  font-weight: bold;
+  padding: 0px;
+}
+
+.posted-by p {
+  margin-bottom: 0px;
+}
+
+.comment {
+  padding: 0px;
+}
+
+.comment-box {
+  background-color: #fdeaed;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.posted-ago {
+  padding: 0px;
+  color: grey;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.posted-ago p{
+  margin-bottom: 0px;
 }

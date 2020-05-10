@@ -1,12 +1,21 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
+//IMPORT MODELS
+require('./models/comments');
+
 const app = express();
+
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/comments').then(() => {
+  console.log("Connected to Database");
+}).catch((err) => {
+  console.log("Not Connected to Database ERROR! ", err);
+});
+
 app.use(bodyParser.json());
 require('./routes/fetchVideos')(app);
-
-//const mongoose = require('mongoose');
-//mongoose.Promise = global.Promise;
-//mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/zubhub`);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
