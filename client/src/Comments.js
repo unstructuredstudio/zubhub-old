@@ -3,6 +3,8 @@ import {Row, Container, Col, Button} from 'react-bootstrap';
 import history from './History';
 
 function Comments(props) {
+  const comments = props && props.commentsObj[0] && props.commentsObj[0].comments;
+
   return (
     <Container className="comments-container">
       <Row>
@@ -36,20 +38,23 @@ function Comments(props) {
           <p>450 chars left</p>
         </Col>
       </Row>
-
-      {props.commentsObj.map((item, index) => {
-        return <Row key={'comment-row-' + index}>
-        <Col xs={12} className="posted-by"><p>{item.postedby}</p></Col>
-        <Col xs={12} className="comment">
-          <div className="comment-box">
-          {item.description}
-          </div>
-        </Col>
-        <Col xs={12} className="posted-ago">
-          <p>{item.postedago}</p>
-        </Col>
-      </Row>
-      })}
+      {(comments!= null && comments.length > 0) ? (
+        comments.map((item, index) => {
+          return <Row key={'comment-row-' + index}>
+          <Col xs={12} className="posted-by"><p>{item.postedby}</p></Col>
+          <Col xs={12} className="comment">
+            <div className="comment-box">
+            {item.description}
+            </div>
+          </Col>
+          <Col xs={12} className="posted-ago">
+            <p>{item.postedago}</p>
+          </Col>
+        </Row>
+        })
+      ) : (
+        <p>No comments found</p>
+      )}
     </Container>
   );
 }
