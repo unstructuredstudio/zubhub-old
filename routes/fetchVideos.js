@@ -18,7 +18,6 @@ module.exports = (app) => {
 			videoObj = "";
     
 		let videos = await fetchVideos();
-		let commentsObj = await Comment.find({});
 
 		if(videos) {
 			for (v in videos) {
@@ -28,8 +27,26 @@ module.exports = (app) => {
 				}
 			}      
 		}
+		//Code for adding comments to local mongo db–to be removed later
+		// await Comment.remove({})
+		// await Comment.create({
+		// 	videoId: '108658131',
+		// 	comments: [
+		// 	{
+		// 		postedby: 'spand',
+		// 		description: 'I am doing fine',
+		// 		postedago: '2:30 pm'
+		// 	},
+		// 	{
+		// 		postedby: 'biks',
+		// 		description: 'nice video',
+		// 		postedago: '2:33 pm'
+		// 	}]
+		// })
 
+		let commentsObj = await Comment.find({'videoId': videoId});
 		videoObj['comments'] = commentsObj
+
 		return res.status(200).send(videoObj);
 	});
 
