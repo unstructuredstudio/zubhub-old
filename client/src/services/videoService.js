@@ -10,4 +10,9 @@ export default {
     const res = await axios.get(`/api/video/` + id);
     return res.data || [];
   },
+
+  postComment: async (id, commmentsData) => {
+    const res = await axios.post(`/api/video/` + id, commmentsData);
+    return res.data || [];
+  },
 };

@@ -66,7 +66,7 @@ function VideoPage() {
             return <span key={'tag-' + index} className="tags">{item.tag}
             </span>;
           })}
-          <Comments commentsObj={videoObject.comments}></Comments>
+          <Comments videoId={id} commentsObj={videoObject.comments}></Comments>
         </Col>
       </Row>
       }
