@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 
 function Comments(props) {
   const tempObj = props;
-  const preComments = tempObj && tempObj.commentsObj[0] &&
-    tempObj.commentsObj[0].comments;
+  const preComments = tempObj && tempObj.commentsObj &&
+    tempObj.commentsObj[0] && tempObj.commentsObj[0].comments;
 
   const videoId = tempObj && tempObj.videoId;
   const [newComments, setNewComments] = React.useState(preComments?
@@ -25,7 +25,7 @@ function Comments(props) {
     <Container className="comments-container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Row>
-          <h4>{newComments.length} comments</h4>
+          <h4>{newComments!= null ? newComments.length : 0} comments</h4>
         </Row>
         <Row className="post-as-row">
           <Col lg="2" xs="6" className="username-label">
