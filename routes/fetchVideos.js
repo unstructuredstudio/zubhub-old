@@ -27,27 +27,42 @@ module.exports = (app) => {
 				}
 			}      
 		}
-		//Code for adding comments to local mongo db–to be removed later
-		// await Comment.remove({})
-		// await Comment.create({
-		// 	videoId: '108658131',
-		// 	comments: [
-		// 	{
-		// 		postedby: 'spand',
-		// 		description: 'I am doing fine',
-		// 		postedago: '2:30 pm'
-		// 	},
-		// 	{
-		// 		postedby: 'biks',
-		// 		description: 'nice video',
-		// 		postedago: '2:33 pm'
-		// 	}]
-		// })
-
-		let commentsObj = await Comment.find({'videoId': videoId});
-		videoObj['comments'] = commentsObj
+	
+		let commentsObj = await Comment.find({"videoId": videoId});
+		videoObj["comments"] = commentsObj;
 
 		return res.status(200).send(videoObj);
+	});
+
+	app.post("/api/video/:id", async(req, res) => {
+		let videoId = req.params.id,
+			postedby = req.body.postedby,
+			description = req.body.description;
+
+		let results = await Comment.find({"videoId": videoId});
+		let prevComments = results && results[0] && results[0].comments 
+			? results[0].comments : [];
+
+		let newComments = [...prevComments];
+	
+		newComments.push({
+			postedby: postedby,
+			description: description,
+			postedago: new Date()
+		});
+
+		let newCommentsData = {
+			videoId: videoId,
+			comments: newComments
+		};
+
+		if(prevComments.length == 0) {
+			await Comment.create(newCommentsData);
+		} else {
+			await Comment.updateOne(newCommentsData);
+		}
+
+		res.status(200).send(newCommentsData);
 	});
 
 	app.get("/api/videos", async(req, res) => {
@@ -58,7 +73,7 @@ module.exports = (app) => {
 		} else {
 			return res.status(401).send("Something is weird");
 		}
-	});  
+	});
 };
 
 async function fetchVideos() {

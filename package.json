@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm run start --prefix client",
-    "start": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "server": "nodemon index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,14 +28,15 @@
     "express": "^4.17.1",
     "history": "^4.10.1",
     "react-bootstrap": "^1.0.0-beta.17",
+    "react-hook-form": "^5.7.1",
     "react-router-dom": "^5.1.2",
     "vimeo": "^2.1.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react": "^7.20.0",
     "mongoose": "^5.9.5",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.3"
   }
 }
