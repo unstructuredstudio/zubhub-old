@@ -62,20 +62,20 @@ function VideoGallery() {
 
   return (
     <Container className="video-gallery">
-      <div className="videos">
-        <div className="gallery-sub-nav">
-          <div className="sub-title">
-            Videos
-          </div>
-          <div className="sub-title">
+      <div className="gallery-sub-nav">
+        <div className="sub-title">
+          Videos
+        </div>
+        <div className="sub-title">
           <DropdownButton id="category-list" title="Category">
             <Dropdown.Item href="#/action-1">Toys</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Art</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Stories</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Science Project</Dropdown.Item>
           </DropdownButton>
-          </div>
         </div>
+      </div>
+      <div className="videos">
         {(videos!= null && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (

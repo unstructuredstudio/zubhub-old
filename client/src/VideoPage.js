@@ -6,6 +6,11 @@ import {Button} from 'react-bootstrap';
 import {Row, Container, Col} from 'react-bootstrap';
 import history from './History';
 import Comments from './Comments';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faExternalLinkAlt, faEye} from '@fortawesome/free-solid-svg-icons';
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+import './VideoGallery.css'
 
 
 function VideoPage() {
@@ -28,48 +33,64 @@ function VideoPage() {
 
   return (
     <Container className="video-page">
+      <div className="video-sub-nav">
+          <div className="sub-title">
+            <Button bsPrefix="super-btn" id="back-button" variant="primary"
+              onClick={() => history.push('/')}> ◄ Back</Button>
+          </div>
+      </div>
+      <div className="video-page-view">
       {(videoObject == null) &&
       <p>No video found :-(</p>
       }
-      <Row>
-        <Col className="button-box" lg={4} xs={12}>
-          <Button bsPrefix="super-btn" className="back-button" variant="primary"
-            onClick={() => history.push('/')}>Back to Video Gallery</Button>
-        </Col>
-      </Row>
-
       {(videoObject && videoObject !== null) &&
-      <Row>
-        <Col className="video-box" xs={7}>
-          <Vimeo
-            video={videoObject.uri.substring(8)}
-            showTitle={false}
-            showPortrait={false}
-            color='fdeaed'
-            showByline={false}
-            controls={false}
-            width={680}
-          />
-        </Col>
-      </Row>
+        <div className="video-box">
+          <div className="vimeo-container">
+            <Vimeo
+              video={videoObject.uri.substring(8)}
+              showTitle={false}
+              showPortrait={false}
+              color='FFCC00'
+              showByline={false}
+              controls={false}
+              height={500}
+            />
+          </div>
+          <div className="video-controls">
+            <Row>
+              <Col>
+                <AwesomeButton type="primary"><FontAwesomeIcon icon={faEye} /> {videoObject.stats.plays} Views</AwesomeButton>
+              </Col>
+              <Col>
+                <div className="video-url">
+                  <AwesomeButton type="secondary">
+                    <FontAwesomeIcon icon={faExternalLinkAlt} />
+                    {/* <a onClick={() => history.push(
+                        '/video/' + id,
+                        {video: video},
+                    )}> View Project </a> */}
+                  </AwesomeButton>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
       }
 
+
       {(videoObject && videoObject !== null) &&
-      <Row>
-        <Col className="video-info-box" lg={7} sm={11} md={12} xs={9}>
+        <div className="video-info-box" lg={7} sm={11} md={12} xs={9}>
           <h1 className="title">{videoObject.name}</h1>
-          <p className="created">{videoObject.stats.plays} views | Uploaded on
-            {videoObject.created_time}</p>
-          <h3 className="username">{videoObject.user.name}</h3>
-          <p className="description">{videoObject.description}</p>
           {videoObject.tags.map((item, index) => {
             return <span key={'tag-' + index} className="tags">{item.tag}
             </span>;
           })}
-          <Comments videoId={id} commentsObj={videoObject.comments}></Comments>
-        </Col>
-      </Row>
+          {/* <h3 className="username">{videoObject.user.name}</h3> */}
+          <p className="description">{videoObject.description}</p>
+          {/* <Comments videoId={id} commentsObj={videoObject.comments}></Comments> */}
+        </div>
       }
+      </div>
     </Container>
   );
 }
