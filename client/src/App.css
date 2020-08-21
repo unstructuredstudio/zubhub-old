@@ -5,6 +5,8 @@ body {
   background-color: #ececec;
   font-family: 'Montserrat', sans-serif;
   color: #282828;
+  height: 100%;
+  margin: 0;
 }
 
 #category-list {
@@ -22,6 +24,8 @@ body {
   font-weight: 900;
   display: flex;
   justify-content: space-between;
+  background-color: #FFCC00;
+  padding: 20px;
 }
 
 .sub-title{
@@ -59,9 +63,10 @@ body {
 /* VideoGallery component style */
 .video-gallery {
   margin: 0px;
-  padding: 20px;
-  background-color: #FFCC00;
   min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
 }
 
 .vimeo-player {
@@ -73,47 +78,90 @@ body {
   float: left;
   width: 640px;
   height: 430px;
-  margin: 30px;
-  margin-top: 90px;
+  margin: 50px;
   background-color: #fc0;
   border: 10px solid #fc0;
   box-shadow: 10px 10px #CDA500;
 }
 
-p.video-url {
+.video-url {
   cursor: pointer;
   text-align: right;
 }
 
 /* VideoPage component style */
 .video-box {
+  padding: 20px;
+  flex: 1;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.video-controls {
   padding: 10px;
+  background: #CDA500;
+  margin: 10px -20px -20px -20px;
+}
+
+.vimeo-container {
+  flex: 1;
+  align-self: center;
 }
 
 .video-info-box {
-  padding: 0px;
+  padding: 40px;
+  padding-top: 0px;
+  flex: 1;
+  background: #fc0;
 }
 
 .video-info-box .title {
   margin-top: 10px;
+  font-weight: 900;
+  font-size: calc(50px + 2vmin);
 }
 
 .video-info-box .created {
-  border-bottom: 1px solid lightgray;
   padding-bottom: 10px;
 }
 
 .video-info-box .tags {
-  background: #fdeaed;
+  background: #DC3545;
+  font-weight: 900;
+  font-size: 2vmin;
+  color: #FFCC00;
   margin-right: 10px;
-  border-radius: 2px;
-  padding: 3px 10px 5px 10px;
+  border-radius: 20px;
+  padding: 5px 15px 5px 15px;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  box-shadow: 4px 4px #CDA500;
+}
+
+.video-info-box .description {
+  font-size: 2.5vmin;
 }
 
 .video-page {
-  margin: 60px;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-sub-nav {
+  margin: 0;
+  padding: 20px;
+  background-color: #FFCC00;
+  min-width: 100%;
+}
+
+.video-page-view {
+  display: flex;
 }
 
 .button-box {
@@ -121,12 +169,13 @@ p.video-url {
   margin: 10px;
 }
 
-.back-button {
-  background: #CEBB41;
+#back-button {
+  color: #282828;
+  background-color: transparent;
+  font-size: calc(10px + 3vmin);
   border: none;
-  color: white;
-  border-radius: 2px;
-  padding: 5px 10px 5px 10px;
+  font-weight: 900;
+  border-radius: 0;
 }
 
 @media only screen and (max-width: 1224px) {
