@@ -1,0 +1,27 @@
+/* Button Styles */
+.aws-btn {
+
+    --button-default-height: 48px;
+    --button-default-font-size: 14px;
+    --button-default-border-radius: 6px;
+    --button-horizontal-padding: 20px;
+    --button-raise-level: 5px;
+    --button-hover-pressure: 2;
+    --transform-speed: .185s;
+    --button-primary-color: #00b8c4;
+    --button-primary-color-dark: #d0b400;
+    --button-primary-color-light: #ffe11d;
+    --button-primary-color-hover: #00a0ab;
+    --button-primary-border: 1px solid #ffe11d;
+    --button-secondary-color: #ee3253;
+    --button-secondary-color-dark: #d0b400;
+    --button-secondary-color-light: #ffe11d;
+    --button-secondary-color-hover: #ec1a3f;
+    --button-secondary-border: 1px solid #ffe11d;
+    --button-anchor-color: #293b83;
+    --button-anchor-color-dark: #772250;
+    --button-anchor-color-light: #b33377;
+    --button-anchor-color-hover: #293b83;
+    --button-anchor-border: 1px solid #9f2d6a;
+  
+  }

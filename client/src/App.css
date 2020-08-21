@@ -1,19 +1,55 @@
 /* App component style */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap');
+
+body {
+  background-color: #ececec;
+  font-family: 'Montserrat', sans-serif;
+  color: #282828;
+}
+
+#category-list {
+  color: #282828;
+  background-color: transparent;
+  font-size: calc(10px + 3vmin);
+  border: none;
+  border-bottom: 5px solid #282828;
+  font-weight: 900;
+  border-radius: 0;
+}
+
+.gallery-sub-nav {
+  font-size: calc(10px + 3vmin);
+  font-weight: 900;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-title{
+  width: 20%;
+}
+
 .App-logo {
-  height: 10vmin;
+  height: 5vmin;
   pointer-events: none;
+  padding: 5px;
+}
+
+.hamburger {
+  height: 5vmin;
+  pointer-events: none;
+  padding: 10px;
 }
 
 .App-header {
-  background-color: #fdeaed;
-  min-height: 15vh;
+  background-image: linear-gradient(#DC3545, #c73948);
+  min-height: 7vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .App-link {
@@ -22,15 +58,26 @@
 
 /* VideoGallery component style */
 .video-gallery {
-  margin: 50px;
+  margin: 0px;
+  padding: 20px;
+  background-color: #FFCC00;
+  min-width: 100%;
 }
+
+.vimeo-player {
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .video-item {
   float: left;
-  width: 320px;
-  height: 200px;
-  margin: 19px;
-  background-color: #fdeaed;
-  border: 10px solid #fdeaed;
+  width: 640px;
+  height: 430px;
+  margin: 30px;
+  margin-top: 90px;
+  background-color: #fc0;
+  border: 10px solid #fc0;
+  box-shadow: 10px 10px #CDA500;
 }
 
 p.video-url {

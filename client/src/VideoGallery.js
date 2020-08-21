@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import videoService from './services/videoService';
 import history from './History';
-import {Row, Container, Col} from 'react-bootstrap';
+import {Row, Container, Col, Dropdown, DropdownButton} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faExternalLinkAlt, faEye} from '@fortawesome/free-solid-svg-icons';
-
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+import './VideoGallery.css'
 
 function VideoGallery() {
   const [videos, setVideos] = useState(null);
@@ -20,26 +22,37 @@ function VideoGallery() {
     setVideos(res);
   };
 
+  const videoBg = {
+    backgroundColor: "black",
+    height: "85%",
+    width: "100%",
+    marginBottom: 10
+  };
+
   const renderVideo = (video) => {
     const id = video.uri.substring(8);
     return (
       <div key={id} className="video-item">
-        <iframe title="vimeo-player"
+        <div style={videoBg}>
+        <iframe title="vimeo-player" className="vimeo-player"
           src={'https://player.vimeo.com/video/' + id}
           frameBorder="0"
         >
         </iframe>
+        </div>
         <Row>
           <Col>
-            <p><FontAwesomeIcon icon={faEye} /> {video.stats.plays} views</p>
+            <p><AwesomeButton type="primary"><FontAwesomeIcon icon={faEye} /> {video.stats.plays} Views</AwesomeButton> </p>
           </Col>
           <Col>
             <p className="video-url">
-              <a onClick={() => history.push(
-                  '/video/' + id,
-                  {video: video},
-              )}> View project </a>
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              <AwesomeButton type="secondary">
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+                <a onClick={() => history.push(
+                    '/video/' + id,
+                    {video: video},
+                )}> View Project </a>
+              </AwesomeButton>
             </p>
           </Col>
         </Row>
@@ -50,6 +63,19 @@ function VideoGallery() {
   return (
     <Container className="video-gallery">
       <div className="videos">
+        <div className="gallery-sub-nav">
+          <div className="sub-title">
+            Videos
+          </div>
+          <div className="sub-title">
+          <DropdownButton id="category-list" title="Category">
+            <Dropdown.Item href="#/action-1">Toys</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Art</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Stories</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Science Project</Dropdown.Item>
+          </DropdownButton>
+          </div>
+        </div>
         {(videos!= null && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (
@@ -59,4 +85,5 @@ function VideoGallery() {
     </Container>
   );
 }
+
 export default VideoGallery;
