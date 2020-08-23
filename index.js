@@ -4,12 +4,14 @@ const bodyParser = require("body-parser");
 
 //IMPORT MODELS
 require("./models/comments");
+require("./models/statistics");
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
+mongoose.set("useFindAndModify", false);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/comments").then(() => {
 	console.log("Connected to Database");
 }).catch((err) => {

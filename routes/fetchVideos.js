@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const Comment = mongoose.model('comments');
+const mongoose = require("mongoose");
+const Comment = mongoose.model("comments");
+const Likes = mongoose.model("likes");
 
 const Vimeo = require("vimeo").Vimeo;
 require("dotenv").config();
@@ -67,12 +68,27 @@ module.exports = (app) => {
 
 	app.get("/api/videos", async(req, res) => {
 		let videos = await fetchVideos();
+		let likes = await Likes.find();
 
 		if(videos) {
-			return res.status(200).send(videos);
+			return res.status(200).send({videos: videos, likes: likes});
 		} else {
 			return res.status(401).send("Something is weird");
 		}
+	});
+
+	app.post("/api/videos", async(req, res) => {
+		let videoID = req.body.videoId;
+		let count = req.body.liked ? 1 : -1;
+		
+		await Likes.findOneAndUpdate(
+			{ "videoId": videoID },
+			{ $inc: { "likes": count } },
+			{ upsert: true }
+		);
+
+		let results = await Likes.find({"videoId": videoID});
+		res.status(200).send(results);
 	});
 };
 

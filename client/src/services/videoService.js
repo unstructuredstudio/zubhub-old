@@ -15,4 +15,10 @@ export default {
     const res = await axios.post(`/api/video/` + id, commmentsData);
     return res.data || [];
   },
+
+  updateLikesCount: async (id, liked) => {
+    const likeObj = {videoId: id, liked: liked};
+    const res = await axios.post(`/api/videos`, likeObj);
+    return res.data || [];
+  },
 };
