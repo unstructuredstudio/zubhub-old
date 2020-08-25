@@ -96,7 +96,6 @@ function VideoGallery() {
               }}>
                 <AwesomeButton type="secondary">
                   <FontAwesomeIcon icon={faThumbsUp} />
-                  {liked ? 'Unlike' : 'Like'}
                 </AwesomeButton>
               </a>
             </Row>
@@ -108,6 +107,7 @@ function VideoGallery() {
                 <a onClick={() => history.push(
                     '/video/' + id,
                     {video: video},
+                    {likes: statsData},
                 )}> View Project </a>
               </AwesomeButton>
             </p>
