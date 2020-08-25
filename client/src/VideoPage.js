@@ -3,12 +3,10 @@ import Vimeo from '@u-wave/react-vimeo';
 import {useParams} from 'react-router-dom';
 import videoService from './services/videoService';
 import {Button} from 'react-bootstrap';
-import {Row, Container, Col} from 'react-bootstrap';
+import {Row, Container} from 'react-bootstrap';
 import history from './History';
 import Comments from './Comments';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faThumbsUp} from '@fortawesome/free-solid-svg-icons';
-import {AwesomeButton} from 'react-awesome-button';
+import Likes from './Likes';
 import 'react-awesome-button/dist/styles.css';
 import './VideoGallery.css';
 
@@ -17,11 +15,6 @@ function VideoPage() {
   const {id} = useParams();
   const [videoObject, setVideoObject] = useState(null);
   const [likesObject, setLikesObject] = useState(null);
-
-  const liked = likesObject && likesObject[0] && likesObject[0].liked ?
-    likesObject[0].liked : false;
-  const numLikes = likesObject && likesObject[0] && likesObject[0].likes ?
-    likesObject[0].likes : 0;
 
   useEffect(() => {
     if (!videoObject) {
@@ -32,34 +25,7 @@ function VideoPage() {
   const getVideoObject = async () => {
     const res = await videoService.getVideo(id);
     setVideoObject(res.video);
-    console.log('Likes' + JSON.stringify(res.likes));
     setLikesObject(res.likes);
-  };
-
-  const updateLikesCount = async (videoID, liked) => {
-    const res = await videoService.updateLikesCount(videoID, liked);
-    const likesObj = likesObject[0];
-
-    if (likesObj) {
-      let videoExists = false;
-
-      if (likesObj.videoId === videoID) {
-        likesObj.liked = liked;
-        likesObj.likes = res[0].likes;
-        videoExists = true;
-      }
-
-      if (!videoExists) {
-        likesObj.push({
-          videoId: videoID,
-          liked: liked,
-          _id: res[0]._id,
-          likesObj: res[0].likes,
-        });
-      }
-
-      setLikesObject([likesObj]);
-    }
   };
 
   return (
@@ -89,19 +55,7 @@ function VideoPage() {
           </div>
           <div className="video-controls">
             <Row>
-              <Col>
-                <Row style={{margin: '0px'}}>
-                  <p><AwesomeButton type="primary">{numLikes} likes
-                  </AwesomeButton> </p>
-                  <a onClick={() => {
-                    updateLikesCount(id, !liked);
-                  }}>
-                    <AwesomeButton type="secondary">
-                      <FontAwesomeIcon icon={faThumbsUp} />
-                    </AwesomeButton>
-                  </a>
-                </Row>
-              </Col>
+              <Likes likesObj={likesObject}></Likes>
             </Row>
           </div>
         </div>
