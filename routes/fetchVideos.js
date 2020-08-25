@@ -31,8 +31,9 @@ module.exports = (app) => {
 	
 		let commentsObj = await Comment.find({"videoId": videoId});
 		videoObj["comments"] = commentsObj;
+		let likesObj = await Likes.find({"videoId": videoId});
 
-		return res.status(200).send(videoObj);
+		return res.status(200).send({video: videoObj, likes: likesObj});
 	});
 
 	app.post("/api/video/:id", async(req, res) => {
