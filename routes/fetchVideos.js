@@ -16,8 +16,13 @@ module.exports = (app) => {
 
   app.get("/api/video/:id", async(req, res) => {
     let videoId = req.params.id,
-      videoObj = "";
-    let videos = await fetchVideos();
+      videoObj = "",
+      videos = req.session.videos;
+
+    if(!videos) {
+      videos = await fetchVideos();
+      req.session.videos = videos;
+    }
 
     if(videos) {
       for (v in videos) {
@@ -68,18 +73,29 @@ module.exports = (app) => {
   app.get("/api/category/:name", async(req, res) => {
     let categoryName = req.params.name.toLowerCase(),
       tempVideos = [],
-      tempIds = [];
-    let videos = await fetchVideos();
+      tempIds = [],
+      videos = req.session.videos;
 
-    videos.forEach(video => {
-      video.tags.forEach(tags => {
-        let tagName = tags.tag.toLowerCase();
-        if(tagName.includes(categoryName)) {
-          tempVideos.push(video);
-          tempIds.push(video.uri.substring(8));
+    if(!videos) {
+      videos = await fetchVideos();
+      req.session.videos = videos;
+    }
+
+    if(videos) {
+      videos.forEach(video => {
+        if (video && video.tags) {
+          video.tags.forEach(tags => {
+            if (tags.tag) {
+              let tagName = tags.tag.toLowerCase();
+              if(tagName.includes(categoryName)) {
+                tempVideos.push(video);
+                tempIds.push(video.uri.substring(8));
+              }
+            }
+          });
         }
       });
-    });
+    }
 
     let likes = await Likes.find().where("videoId").in(tempIds).exec();
     if (videos) {
@@ -91,7 +107,13 @@ module.exports = (app) => {
 
   app.get("/api/videos", async(req, res) => {
     let likes = await Likes.find();
-    let videos = await fetchVideos();
+    let videos = req.session.videos;
+
+    if(!videos) {
+      console.log('Didnt find videos');
+      videos = await fetchVideos();
+      req.session.videos = videos;
+    }
 
     if(videos) {
       return res.status(200).send({videos: videos, likes: likes});

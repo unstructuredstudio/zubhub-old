@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 //IMPORT MODELS
 require("./models/comments");
@@ -9,6 +10,7 @@ require("./models/statistics");
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(session({secret: "zubhub"}));
 
 mongoose.Promise = global.Promise;
 mongoose.set("useFindAndModify", false);
