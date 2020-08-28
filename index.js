@@ -6,11 +6,12 @@ const session = require("express-session");
 //IMPORT MODELS
 require("./models/comments");
 require("./models/statistics");
+require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(session({secret: "zubhub"}));
+app.use(session({secret: process.env.ZUBHUB_SESSION_SECRET}));
 
 mongoose.Promise = global.Promise;
 mongoose.set("useFindAndModify", false);

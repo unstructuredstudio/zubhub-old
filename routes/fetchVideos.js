@@ -110,7 +110,6 @@ module.exports = (app) => {
     let videos = req.session.videos;
 
     if(!videos) {
-      console.log('Didnt find videos');
       videos = await fetchVideos();
       req.session.videos = videos;
     }
