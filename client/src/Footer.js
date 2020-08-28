@@ -4,12 +4,12 @@ import './Footer.css';
 
 function Footer() {
   return (
-    <footer class="footer-distributed">
-      <div class="footer-right">
+    <footer className="footer-distributed">
+      <div className="footer-right">
 
       </div>
 
-      <div class="footer-left">
+      <div className="footer-left">
 
       </div>
       <img src={unstructuredLogo} className="footer-logo" alt="unstructured-studio-logo" />

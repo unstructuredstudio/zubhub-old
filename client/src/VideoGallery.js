@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import videoService from './services/videoService';
 import history from './History';
 import Likes from './Likes';
+import {useParams} from 'react-router-dom';
 import {Row, Container, Col, Dropdown, DropdownButton} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faExternalLinkAlt, faEye}
@@ -12,25 +13,41 @@ import './VideoGallery.css';
 
 
 function VideoGallery() {
+  const {name} = useParams();
+  const [categoryName, setCategoryName] = useState(name?name:null);
   const [videos, setVideos] = useState(null);
   const [likes, setLikes] = useState(null);
+  const categoryList = ['Toys', 'Art', 'Stories', 'Science', 'Buildings',
+    'Music', 'Games', 'Electronics', 'Robotics', 'Coding', 'Animations',
+    'Mechanical'];
 
   useEffect(() => {
     if (!videos) {
       getVideos();
     }
-  });
+    if (categoryName) {
+      getCategoryVideos(categoryName);
+    }
+  }, [categoryName]);
 
   const getVideos = async () => {
     const res = await videoService.getAll();
-    const likesData = res.likes;
+    resetLikes(res.likes);
+    setVideos(res.videos);
+  };
 
-    likesData.forEach((item) => {
+  const getCategoryVideos = async (category) => {
+    const res = await videoService.getCategoryVideos(category);
+    resetLikes(res.likes);
+    setVideos(res.videos);
+  };
+
+  const resetLikes = (prevLikes) => {
+    const newLikes = prevLikes;
+    newLikes.forEach((item) => {
       item.liked = false;
     });
-
-    setLikes([...likesData]);
-    setVideos(res.videos);
+    setLikes([...newLikes]);
   };
 
   const videoBg = {
@@ -87,20 +104,27 @@ function VideoGallery() {
           </div>
           <div className="sub-title">
             <DropdownButton id="category-list" title="Category">
-              <Dropdown.Item href="#/action-1">Toys</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Art</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Stories</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Science Project</Dropdown.Item>
+              <Dropdown.Item href="/">All Categories</Dropdown.Item>
+              {categoryList.map((category) => (
+                <Dropdown.Item key={'dropdownitem-' + category}
+                  onClick={() => {
+                    history.push('/category/' + category.toLowerCase());
+                    setCategoryName(category.toLowerCase());
+                  }}>
+                  {category}
+                </Dropdown.Item>
+              ))}
             </DropdownButton>
           </div>
         </div>
       </div>
       <div className="videos">
-        {(videos!= null && videos.length > 0) ? (
+        {(videos && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (
         <p>Loading...</p>
       )}
+        {videos && videos.length === 0 && <p> No videos found!</p>}
       </div>
     </Container>
   );

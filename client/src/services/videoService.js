@@ -6,6 +6,11 @@ export default {
     return res.data || [];
   },
 
+  getCategoryVideos: async (name) => {
+    const res = await axios.get(`/api/category/` + name);
+    return res.data || [];
+  },
+
   getVideo: async (id) => {
     const res = await axios.get(`/api/video/` + id);
     return res.data || [];
