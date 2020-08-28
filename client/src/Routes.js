@@ -10,6 +10,7 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={VideoGallery} />
         <Route path="/video/:id" component={VideoPage} />
+        <Route path="/category/:name" component={VideoGallery} />
       </Switch>
     </Router>
   );
