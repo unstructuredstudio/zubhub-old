@@ -19,6 +19,16 @@ body {
   border-radius: 0;
 }
 
+.dropdown-item {
+  font-weight: 900;
+  line-height: 2em;
+  font-size: calc(2vh);
+}
+
+.dropdown-menu {
+  background-color: #FFCC00;
+}
+
 .gallery-sub-nav {
   font-size: calc(10px + 3vh);
   font-weight: 900;
@@ -26,6 +36,10 @@ body {
   justify-content: space-between;
   background-color: #FFCC00;
   padding: 20px;
+}
+
+.gallery-sub-nav .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
 }
 
 .sub-title{

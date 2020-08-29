@@ -98,7 +98,7 @@ function VideoGallery() {
             Videos
           </div>
           <div className="sub-title">
-            <DropdownButton id="category-list" title="Category">
+            <DropdownButton id="category-list" class="shadow-none" title="Category">
               <Dropdown.Item href="/">All Categories</Dropdown.Item>
               {categoryList.map((category) => (
                 <Dropdown.Item key={'dropdownitem-' + category}
