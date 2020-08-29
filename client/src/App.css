@@ -89,8 +89,8 @@ body {
 
 .video-item {
   float: left;
-  width: 640px;
-  height: 430px;
+  width: 500px;
+  height: 360px;
   margin: calc(10px + 3vh);
   background-color: #fc0;
   border: 10px solid #fc0;
