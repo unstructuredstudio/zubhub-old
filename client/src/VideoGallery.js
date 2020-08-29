@@ -118,7 +118,7 @@ function VideoGallery() {
           </div>
         </div>
       </div>
-      <div className="videos">
+      <div className="video-spread">
         {(videos && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (

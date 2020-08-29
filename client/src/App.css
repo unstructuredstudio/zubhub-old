@@ -20,7 +20,7 @@ body {
 }
 
 .gallery-sub-nav {
-  font-size: calc(10px + 3vmin);
+  font-size: calc(10px + 3vh);
   font-weight: 900;
   display: flex;
   justify-content: space-between;
@@ -29,19 +29,22 @@ body {
 }
 
 .sub-title{
-  width: 20%;
+  
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
-  height: 5vmin;
   pointer-events: none;
-  padding: 5px;
+  padding: 20px;
 }
 
 .hamburger {
-  height: 5vmin;
   pointer-events: none;
-  padding: 10px;
+  padding: 20px;
 }
 
 .App-header {
@@ -74,11 +77,19 @@ body {
   min-height: 100%;
 }
 
+.video-spread {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .video-item {
   float: left;
   width: 640px;
   height: 430px;
-  margin: 50px;
+  margin: calc(10px + 3vh);
   background-color: #fc0;
   border: 10px solid #fc0;
   box-shadow: 10px 10px #CDA500;
@@ -190,13 +201,46 @@ body {
     width: 500px;
     height: 250px;
   }
+
+  .video-spread {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .video-item {
+    float: left;
+    width: unset;
+    height: unset;
+    margin: calc(10px + 3vh);
+    background-color: #fc0;
+    border: 10px solid #fc0;
+    box-shadow: 10px 10px #CDA500;
+  }
+
 }
 
 @media only screen and (max-width: 500px) {
   .video-box iframe {
     width: 350px;
     height: 200px;
+
   }
+
+  .video-spread {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .video-item {
+    float: left;
+    width: unset;
+    height: unset;
+    margin: calc(10px + 3vh);
+    background-color: #fc0;
+    border: 10px solid #fc0;
+    box-shadow: 10px 10px #CDA500;
+  }
+
 }
 
 /* Comments component style */
