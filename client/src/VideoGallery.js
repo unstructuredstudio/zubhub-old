@@ -65,16 +65,11 @@ function VideoGallery() {
       <div key={id} className="video-item">
         <div style={videoBg}>
           <iframe title="vimeo-player" className="vimeo-player"
-            src={'https://player.vimeo.com/video/' + id}
-            frameBorder="0"
-          >
+            src={'https://player.vimeo.com/video/' + id + '?color=ffcc00'}
+            frameBorder="0">
           </iframe>
         </div>
         <Row>
-          {/* <Col>
-            <p><AwesomeButton type="primary"><FontAwesomeIcon icon={faEye} />
-            {video.stats.plays} Views</AwesomeButton> </p>
-          </Col> */}
           <Col>
             <Likes likesObj={[likesData]}></Likes>
           </Col>
