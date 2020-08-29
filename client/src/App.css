@@ -29,7 +29,7 @@ body {
 }
 
 .sub-title{
-  
+  line-height: 2em;
 }
 
 .App {
@@ -40,6 +40,8 @@ body {
 .App-logo {
   pointer-events: none;
   padding: 20px;
+  height: calc(30px + 7vh);
+  /* width: 100vw; */
 }
 
 .hamburger {
@@ -95,6 +97,21 @@ body {
   box-shadow: 10px 10px #CDA500;
 }
 
+.video-item .row {
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.video-item .col {
+padding-left: unset;
+padding-right: unset;
+}
+
+.video-item .container {
+padding-left: unset;
+padding-right: unset;
+}
+
 .video-url {
   cursor: pointer;
   text-align: right;
@@ -108,12 +125,15 @@ body {
   display: flex;
   flex-direction: column;
   align-self: center;
+  width: 100%;
 }
 
 .video-controls {
   padding: 10px;
   background: #CDA500;
   margin: 10px -20px -20px -20px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
 .vimeo-container {
@@ -131,7 +151,7 @@ body {
 .video-info-box .title {
   margin-top: 10px;
   font-weight: 900;
-  font-size: calc(50px + 2vmin);
+  font-size: calc(40px + 3vmin);
 }
 
 .video-info-box .created {
@@ -153,7 +173,7 @@ body {
 }
 
 .video-info-box .description {
-  font-size: 2.5vmin;
+  font-size: calc(12px + 1vmin);
 }
 
 .video-page {
@@ -194,6 +214,11 @@ body {
     width: 700px;
     height: 350px;
   }
+
+  .video-page-view {
+    flex-direction: column;
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -208,13 +233,14 @@ body {
   }
 
   .video-item {
-    float: left;
     width: unset;
     height: unset;
     margin: calc(10px + 3vh);
-    background-color: #fc0;
-    border: 10px solid #fc0;
     box-shadow: 10px 10px #CDA500;
+  }
+
+  .video-page-view {
+    flex-direction: column;
   }
 
 }
@@ -223,7 +249,6 @@ body {
   .video-box iframe {
     width: 350px;
     height: 200px;
-
   }
 
   .video-spread {
@@ -232,15 +257,36 @@ body {
   }
   
   .video-item {
-    float: left;
     width: unset;
     height: unset;
     margin: calc(10px + 3vh);
-    background-color: #fc0;
-    border: 10px solid #fc0;
-    box-shadow: 10px 10px #CDA500;
+    box-shadow: 5px 5px #CDA500;
   }
 
+  .App-logo {
+    pointer-events: none;
+    padding: 20px;
+    height: unset;
+    width: 90vw;
+  }
+
+  .App-header {
+    justify-content: center;
+  }
+
+  .video-page-view {
+    flex-direction: column;
+  }
+
+  .video-info-box .title {
+    font-size: calc(30px + 2vmin);
+  }
+}
+
+.row {
+  margin-right: unset;
+  margin-left: unset;
+  flex-direction: row;
 }
 
 /* Comments component style */

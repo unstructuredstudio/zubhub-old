@@ -1,7 +1,7 @@
 /* Footer Styles */
 
 .footer-logo {
-  height: 5vmin;
+  height: calc(10px + 7vh);
   pointer-events: none;
 }
 
