@@ -125,6 +125,7 @@ module.exports = (app) => {
     let videoID = req.body.videoId;
     let count = req.body.liked ? 1 : -1;
 
+    //await Likes.deleteMany();
     await Likes.findOneAndUpdate(
       { "videoId": videoID },
       { $inc: { "likes": count } },
