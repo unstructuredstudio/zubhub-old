@@ -1,29 +1,33 @@
-import React from 'react';
-import {Row, Container, Col, Button} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Row, Container, Col} from 'react-bootstrap';
 import {useForm} from 'react-hook-form';
 import videoService from './services/videoService';
+import {AwesomeButton} from 'react-awesome-button';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faNewspaper} from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import {format} from 'date-fns';
 
 
 function Comments(props) {
   const tempObj = props;
   const preComments = tempObj && tempObj.commentsObj &&
     tempObj.commentsObj[0] && tempObj.commentsObj[0].comments;
-
   const videoId = tempObj && tempObj.videoId;
   const [newComments, setNewComments] = React.useState(preComments?
     preComments:null);
-
+  const [charsLeft, setCharsLeft] = useState(500);
   const {register, handleSubmit, errors} = useForm();
 
   const onSubmit = async (data) => {
     const res = await videoService.postComment(videoId, data);
     setNewComments(res.comments);
+    document.getElementById('commentsForm').reset();
   };
 
   return (
     <Container className="comments-container">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form id="commentsForm" onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <h4>{newComments!= null ? newComments.length : 0} comments</h4>
         </Row>
@@ -47,16 +51,20 @@ function Comments(props) {
             name="description"
             id="comment"
             placeholder="Add a comment..."
+            onChange={(e) => {
+              setCharsLeft(500 - e.target.value.length);
+            }}
             ref={register({required: true, maxLength: 500})}
           />
         </Row>
         <Row className="publish-btn-chars-row">
-          <Col xs="3" className="btn-box">
-            <Button bsPrefix="super-btn" type="submit"
-              className="publish-button" variant="primary">Publish</Button>
+          <Col xs="4" className="btn-box">
+            <AwesomeButton type="secondary" className="btn-publish">
+            Publish &nbsp; <FontAwesomeIcon icon={faNewspaper} />
+            </AwesomeButton>
           </Col>
-          <Col xs="9" className="chars-box">
-            <p>500 chars left</p>
+          <Col xs="8" className="chars-box">
+            <p>{charsLeft} chars left</p>
             {errors.comment && errors.comment.type === 'required' &&
             <span>This is required</span>}
             {errors.comment && errors.comment.type === 'maxLength' &&
@@ -65,6 +73,8 @@ function Comments(props) {
         </Row>
         {(newComments!= null && newComments.length > 0) ? (
         newComments.map((item, index) => {
+          const formattedDate = format(new Date(item.postedago),
+              'dd MMM yyyy HH:mm a');
           return <Row key={'comment-row-' + index}>
             <Col xs={12} className="posted-by"><p>{item.postedby}</p></Col>
             <Col xs={12} className="comment">
@@ -73,7 +83,7 @@ function Comments(props) {
               </div>
             </Col>
             <Col xs={12} className="posted-ago">
-              <p>{item.postedago}</p>
+              <p>{formattedDate}</p>
             </Col>
           </Row>;
         })
