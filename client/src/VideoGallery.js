@@ -76,7 +76,7 @@ function VideoGallery() {
             {video.stats.plays} Views</AwesomeButton> </p>
           </Col> */}
           <Col>
-            <Likes likesObj={[likesData]}></Likes>
+            <Likes videoId={id} likesObj={[likesData]}></Likes>
           </Col>
           <Col>
             <p className="video-url">

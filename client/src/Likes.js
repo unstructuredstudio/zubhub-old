@@ -8,47 +8,45 @@ import {AwesomeButton} from 'react-awesome-button';
 
 
 function Likes(props) {
-  const tempObj = props && props.likesObj && props.likesObj[0];
-
-  const [likesObj, setLikesObj] = useState(tempObj);
+  const tempObj = props && props.likesObj;
+  const videoId = props && props.videoId;
+  const [likesObj, setLikesObj] = useState(null);
   const [numLikes, setNumLikes] = useState(0);
   const [liked, setLiked] = useState(false);
-  const [videoId, setVideoId] = useState(0);
 
   useEffect(() => {
     if (tempObj) {
       setLikesObj(tempObj);
     }
 
-    if (likesObj) {
-      setNumLikes(likesObj.likes);
-      setLiked(likesObj.liked);
-      setVideoId(likesObj.videoId);
+    if (likesObj !== null) {
+      const obj = likesObj && likesObj[0];
+      if (obj) {
+        setNumLikes(obj.likes);
+        setLiked(obj.liked);
+      }
     }
   }, [tempObj, likesObj]);
 
   const updateLikesCount = async (id, liked) => {
     const res = await videoService.updateLikesCount(id, liked);
     let tempObj = likesObj;
-    let videoExists = false;
+    const obj = tempObj && tempObj[0];
 
-    if (tempObj) {
-      if (tempObj.videoId === id) {
-        tempObj.liked = liked;
-        tempObj.likes = res[0].likes;
-        videoExists = true;
+    if (obj && obj !== null) {
+      if (obj.videoId === id) {
+        obj.liked = liked;
+        obj.likes = res[0].likes;
       }
-      setLikesObj([tempObj]);
-    }
-
-    if (!videoExists) {
+      setLikesObj([...tempObj]);
+    } else {
       tempObj = {
         videoId: id,
         liked: liked,
         _id: res[0]._id,
         likes: res[0].likes,
       };
-      setLikesObj(tempObj);
+      setLikesObj([tempObj]);
     }
   };
 
@@ -73,6 +71,7 @@ function Likes(props) {
 
 Likes.propTypes = {
   likesObj: PropTypes.array,
+  videoId: PropTypes.number,
 };
 
 export default Likes;

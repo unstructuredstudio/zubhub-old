@@ -55,7 +55,7 @@ function VideoPage() {
           </div>
           <div className="video-controls">
             <Row>
-              <Likes likesObj={likesObject}></Likes>
+              <Likes videoId={id} likesObj={likesObject}></Likes>
             </Row>
           </div>
         </div>
