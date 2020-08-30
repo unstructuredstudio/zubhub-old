@@ -71,7 +71,7 @@ function Likes(props) {
 
 Likes.propTypes = {
   likesObj: PropTypes.array,
-  videoId: PropTypes.number,
+  videoId: PropTypes.string,
 };
 
 export default Likes;
