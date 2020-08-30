@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.20.1",
