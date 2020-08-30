@@ -305,8 +305,9 @@ padding-right: unset;
 
 /* Comments component style */
 .comments-container {
-  margin: 20px 0px 20px 0;
-  border-top: 1px solid lightgray;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .comments-container h4 {
@@ -330,7 +331,7 @@ padding-right: unset;
 
 .username-input {
   border-radius: 8px;
-  background-color: #fdeaed;
+  background-color: #fc0;
 }
 
 .post-as-row input {
@@ -349,7 +350,7 @@ padding-right: unset;
 
 .comment-input {
   border-radius: 10px;
-  background-color: #fdeaed;
+  background-color: #fc0;
 }
 
 .comment-input textarea {
@@ -377,13 +378,8 @@ padding-right: unset;
   margin-bottom: 15px;
 }
 
-.btn-box .publish-button {
+.btn-box .btn-publish {
   width: 100%;
-  background: #CEBB41;
-  border: none;
-  color: white;
-  border-radius: 2px;
-  padding: 5px 10px 5px 10px;
 }
 
 .chars-box {
@@ -409,7 +405,7 @@ padding-right: unset;
 }
 
 .comment-box {
-  background-color: #fdeaed;
+  background-color: #fc0;
   padding: 10px;
   width: 100%;
   border-radius: 4px;

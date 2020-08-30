@@ -3,7 +3,7 @@ import Vimeo from '@u-wave/react-vimeo';
 import {useParams} from 'react-router-dom';
 import videoService from './services/videoService';
 import {Button} from 'react-bootstrap';
-import {Row, Container} from 'react-bootstrap';
+import {Row, Col, Container} from 'react-bootstrap';
 import history from './History';
 import Comments from './Comments';
 import Likes from './Likes';
@@ -75,6 +75,15 @@ function VideoPage() {
           </Comments> */}
         </div>
         }
+      </div>
+      <div>
+        <Row>
+          <Col lg={6} md={6} sm={12} xs={12}>
+          {(videoObject && videoObject !== null) &&
+          <Comments videoId={id} commentsObj={videoObject.comments}></Comments>
+          }
+          </Col>
+        </Row>
       </div>
     </Container>
   );
