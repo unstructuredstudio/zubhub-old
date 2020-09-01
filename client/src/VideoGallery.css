@@ -2,7 +2,7 @@
 .aws-btn {
 
     --button-default-height: 48px;
-    --button-default-font-size: 14px;
+    --button-default-font-size: 2vh;
     --button-default-border-radius: 6px;
     --button-horizontal-padding: 20px;
     --button-raise-level: 5px;

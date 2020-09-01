@@ -19,8 +19,18 @@ body {
   border-radius: 0;
 }
 
+.dropdown-item {
+  font-weight: 900;
+  line-height: 2em;
+  font-size: calc(2vh);
+}
+
+.dropdown-menu {
+  background-color: #FFCC00;
+}
+
 .gallery-sub-nav {
-  font-size: calc(10px + 3vmin);
+  font-size: calc(10px + 3vh);
   font-weight: 900;
   display: flex;
   justify-content: space-between;
@@ -28,20 +38,29 @@ body {
   padding: 20px;
 }
 
+.gallery-sub-nav .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
 .sub-title{
-  width: 20%;
+  line-height: 2em;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
-  height: 5vmin;
   pointer-events: none;
-  padding: 5px;
+  padding: 20px;
+  height: calc(30px + 7vh);
+  /* width: 100vw; */
 }
 
 .hamburger {
-  height: 5vmin;
   pointer-events: none;
-  padding: 10px;
+  padding: 20px;
 }
 
 .App-header {
@@ -74,14 +93,37 @@ body {
   min-height: 100%;
 }
 
+.video-spread {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .video-item {
   float: left;
-  width: 640px;
-  height: 430px;
-  margin: 50px;
+  width: 500px;
+  height: 360px;
+  margin: calc(10px + 3vh);
   background-color: #fc0;
   border: 10px solid #fc0;
   box-shadow: 10px 10px #CDA500;
+}
+
+.video-item .row {
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.video-item .col {
+padding-left: unset;
+padding-right: unset;
+}
+
+.video-item .container {
+padding-left: unset;
+padding-right: unset;
 }
 
 .video-url {
@@ -97,12 +139,15 @@ body {
   display: flex;
   flex-direction: column;
   align-self: center;
+  width: 100%;
 }
 
 .video-controls {
   padding: 10px;
   background: #CDA500;
   margin: 10px -20px -20px -20px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
 .vimeo-container {
@@ -120,7 +165,7 @@ body {
 .video-info-box .title {
   margin-top: 10px;
   font-weight: 900;
-  font-size: calc(50px + 2vmin);
+  font-size: calc(40px + 3vmin);
 }
 
 .video-info-box .created {
@@ -142,7 +187,7 @@ body {
 }
 
 .video-info-box .description {
-  font-size: 2.5vmin;
+  font-size: calc(12px + 1vmin);
 }
 
 .video-page {
@@ -183,6 +228,11 @@ body {
     width: 700px;
     height: 350px;
   }
+
+  .video-page-view {
+    flex-direction: column;
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -190,6 +240,23 @@ body {
     width: 500px;
     height: 250px;
   }
+
+  .video-spread {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .video-item {
+    width: unset;
+    height: unset;
+    margin: calc(10px + 3vh);
+    box-shadow: 10px 10px #CDA500;
+  }
+
+  .video-page-view {
+    flex-direction: column;
+  }
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -197,6 +264,43 @@ body {
     width: 350px;
     height: 200px;
   }
+
+  .video-spread {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .video-item {
+    width: unset;
+    height: unset;
+    margin: calc(10px + 3vh);
+    box-shadow: 5px 5px #CDA500;
+  }
+
+  .App-logo {
+    pointer-events: none;
+    padding: 20px;
+    height: unset;
+    width: 90vw;
+  }
+
+  .App-header {
+    justify-content: center;
+  }
+
+  .video-page-view {
+    flex-direction: column;
+  }
+
+  .video-info-box .title {
+    font-size: calc(30px + 2vmin);
+  }
+}
+
+.row {
+  margin-right: unset;
+  margin-left: unset;
+  flex-direction: row;
 }
 
 /* Comments component style */

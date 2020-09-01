@@ -52,7 +52,7 @@ function VideoGallery() {
 
   const videoBg = {
     backgroundColor: 'black',
-    height: '85%',
+    height: '80%',
     width: '100%',
     marginBottom: 10,
   };
@@ -65,16 +65,11 @@ function VideoGallery() {
       <div key={id} className="video-item">
         <div style={videoBg}>
           <iframe title="vimeo-player" className="vimeo-player"
-            src={'https://player.vimeo.com/video/' + id}
-            frameBorder="0"
-          >
+            src={'https://player.vimeo.com/video/' + id + '?color=ffcc00'}
+            frameBorder="0">
           </iframe>
         </div>
         <Row>
-          {/* <Col>
-            <p><AwesomeButton type="primary"><FontAwesomeIcon icon={faEye} />
-            {video.stats.plays} Views</AwesomeButton> </p>
-          </Col> */}
           <Col>
             <Likes videoId={id} likesObj={[likesData]}></Likes>
           </Col>
@@ -103,7 +98,7 @@ function VideoGallery() {
             Videos
           </div>
           <div className="sub-title">
-            <DropdownButton id="category-list" title="Category">
+            <DropdownButton id="category-list" class="shadow-none" title="Category">
               <Dropdown.Item href="/">All Categories</Dropdown.Item>
               {categoryList.map((category) => (
                 <Dropdown.Item key={'dropdownitem-' + category}
@@ -118,7 +113,7 @@ function VideoGallery() {
           </div>
         </div>
       </div>
-      <div className="videos">
+      <div className="video-spread">
         {(videos && videos.length > 0) ? (
         videos.map((video) => renderVideo(video))
       ) : (
