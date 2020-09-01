@@ -51,7 +51,6 @@ function VideoPage() {
               color='FFCC00'
               showByline={false}
               controls={false}
-              height={500}
             />
           </div>
           <div className="video-controls">
@@ -79,12 +78,12 @@ function VideoPage() {
       </div>
       <div>
         <Row>
-          <Col lg={6} md={6} sm={12} xs={12}>
+          <div className="comments-section">
             {(videoObject && videoObject !== null &&
             commentsEnabled === 'true') &&
           <Comments videoId={id} commentsObj={videoObject.comments}></Comments>
             }
-          </Col>
+          </div>
         </Row>
       </div>
     </Container>
