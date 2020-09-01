@@ -40,7 +40,7 @@ function Comments(props) {
             <input
               type="text"
               name="postedby"
-              placeholder="Enter your name"
+              placeholder="Enter your username"
               maxLength="500"
               ref={register({required: true, maxLength: 20})}
             />
