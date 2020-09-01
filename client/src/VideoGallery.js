@@ -78,7 +78,7 @@ function VideoGallery() {
               <AwesomeButton type="secondary">
                 <FontAwesomeIcon icon={faExternalLinkAlt} />
                 <a onClick={() => history.push(
-                    '/video/' + id,
+                    '/project/' + id,
                     {video: video},
                     {likes: likesData},
                 )}> View Project </a>
@@ -95,7 +95,7 @@ function VideoGallery() {
       <div className="videos">
         <div className="gallery-sub-nav">
           <div className="sub-title">
-            Videos
+            Projects
           </div>
           <div className="sub-title">
             <DropdownButton id="category-list" class="shadow-none" title="Category">
