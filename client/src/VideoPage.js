@@ -10,6 +10,7 @@ import Likes from './Likes';
 import 'react-awesome-button/dist/styles.css';
 import './VideoGallery.css';
 
+const commentsEnabled = process.env.REACT_APP_COMMENTS_ENABLED;
 
 function VideoPage() {
   const {id} = useParams();
@@ -79,9 +80,10 @@ function VideoPage() {
       <div>
         <Row>
           <Col lg={6} md={6} sm={12} xs={12}>
-          {(videoObject && videoObject !== null) &&
+            {(videoObject && videoObject !== null &&
+            commentsEnabled === 'true') &&
           <Comments videoId={id} commentsObj={videoObject.comments}></Comments>
-          }
+            }
           </Col>
         </Row>
       </div>
