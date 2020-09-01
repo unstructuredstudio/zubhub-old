@@ -11,10 +11,10 @@ const vimeoClient = new Vimeo(process.env.VIMEO_CLIENT_ID,
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    return res.redirect("/api/videos");
+    return res.redirect("/api/projects");
   });
 
-  app.get("/api/video/:id", async(req, res) => {
+  app.get("/api/project/:id", async(req, res) => {
     let videoId = req.params.id,
       videoObj = "",
       videos = req.session.videos;
@@ -40,7 +40,7 @@ module.exports = (app) => {
     return res.status(200).send({video: videoObj, likes: likesObj});
   });
 
-  app.post("/api/video/:id", async(req, res) => {
+  app.post("/api/project/:id", async(req, res) => {
     let videoId = req.params.id,
       postedby = req.body.postedby,
       description = req.body.description;
@@ -105,7 +105,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get("/api/videos", async(req, res) => {
+  app.get("/api/projects", async(req, res) => {
     let likes = await Likes.find();
     let videos = req.session.videos;
 
@@ -121,7 +121,7 @@ module.exports = (app) => {
     }
   });
 
-  app.post("/api/videos", async(req, res) => {
+  app.post("/api/projects", async(req, res) => {
     let videoID = req.body.videoId;
     let count = req.body.liked ? 1 : -1;
 
