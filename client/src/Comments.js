@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 import videoService from './services/videoService';
 import {AwesomeButton} from 'react-awesome-button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faNewspaper} from '@fortawesome/free-solid-svg-icons';
+import {faNewspaper, faComment, faCommentAlt, faComments, faCommentDots, faCommentSlash, faCommentsDollar} from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import {format} from 'date-fns';
 
@@ -29,17 +29,18 @@ function Comments(props) {
     <Container className="comments-container">
       <form id="commentsForm" onSubmit={handleSubmit(onSubmit)}>
         <Row>
-          <h4>{newComments!= null ? newComments.length : 0} comments</h4>
+          <h2> <FontAwesomeIcon icon={faComments} /> {newComments!= null ? newComments.length : 0} comments</h2>
         </Row>
+        <div className="submit-section">
+        <Row className="username-label">
+            <p>Leave a comment </p>
+          </Row>
         <Row className="post-as-row">
-          <Col lg="2" xs="6" className="username-label">
-            <p>Post as:</p>
-          </Col>
           <Col className="username-input" lg="4" xs="6">
             <input
               type="text"
               name="postedby"
-              placeholder="enter your username"
+              placeholder="Enter your name"
               maxLength="500"
               ref={register({required: true, maxLength: 20})}
             />
@@ -58,12 +59,12 @@ function Comments(props) {
           />
         </Row>
         <Row className="publish-btn-chars-row">
-          <Col xs="4" className="btn-box">
+          <Col xs="6" className="btn-box">
             <AwesomeButton type="secondary" className="btn-publish">
-            Publish &nbsp; <FontAwesomeIcon icon={faNewspaper} />
+            Publish &nbsp; <FontAwesomeIcon icon={faCommentAlt} />
             </AwesomeButton>
           </Col>
-          <Col xs="8" className="chars-box">
+          <Col xs="6" className="chars-box">
             <p>{charsLeft} chars left</p>
             {errors.comment && errors.comment.type === 'required' &&
             <span>This is required</span>}
@@ -71,6 +72,7 @@ function Comments(props) {
             <span>Max length exceeded</span> }
           </Col>
         </Row>
+        </div>
         {(newComments!= null && newComments.length > 0) ? (
         newComments.map((item, index) => {
           const formattedDate = format(new Date(item.postedago),

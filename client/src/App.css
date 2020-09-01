@@ -138,7 +138,6 @@ padding-right: unset;
   background-color: black;
   display: flex;
   flex-direction: column;
-  align-self: center;
   width: 100%;
 }
 
@@ -304,14 +303,29 @@ padding-right: unset;
 }
 
 /* Comments component style */
+
+.comments-section {
+  width: 100%;
+  font-size: calc(12px + 1vmin);
+}
+
 .comments-container {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin: 20px;
 }
 
-.comments-container h4 {
+.comments-container h2 {
   margin-top: 10px;
+  font-weight: 900;
+}
+
+.submit-section {
+  padding: 30px;
+  background-color: #DADADA;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 15px;
 }
 
 .post-as-row {
@@ -322,6 +336,8 @@ padding-right: unset;
 
 .username-label {
   padding: 0px;
+  /* padding-right: 5px; */
+  font-weight: 900;
 }
 
 .username-label p {
@@ -330,8 +346,8 @@ padding-right: unset;
 }
 
 .username-input {
-  border-radius: 8px;
   background-color: #fc0;
+  box-shadow: 5px 5px #CDA500;
 }
 
 .post-as-row input {
@@ -349,8 +365,8 @@ padding-right: unset;
 }
 
 .comment-input {
-  border-radius: 10px;
   background-color: #fc0;
+  box-shadow: 5px 5px #CDA500;
 }
 
 .comment-input textarea {
@@ -408,7 +424,7 @@ padding-right: unset;
   background-color: #fc0;
   padding: 10px;
   width: 100%;
-  border-radius: 4px;
+  box-shadow: 5px 5px #CDA500;
 }
 
 .posted-ago {
@@ -417,6 +433,7 @@ padding-right: unset;
   font-weight: 500;
   font-size: 0.8rem;
   text-align: right;
+  padding-top: 10px;
 }
 
 .posted-ago p{
