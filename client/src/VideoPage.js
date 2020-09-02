@@ -3,7 +3,7 @@ import Vimeo from '@u-wave/react-vimeo';
 import {useParams} from 'react-router-dom';
 import videoService from './services/videoService';
 import {Button} from 'react-bootstrap';
-import {Row, Col, Container} from 'react-bootstrap';
+import {Row, Container} from 'react-bootstrap';
 import history from './History';
 import Comments from './Comments';
 import Likes from './Likes';

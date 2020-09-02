@@ -56,13 +56,11 @@ function Likes(props) {
         <Row style={{margin: '0px'}}>
           <p><AwesomeButton type="primary">{numLikes} likes
           </AwesomeButton> </p>
-          <a onClick={() => {
+          <AwesomeButton type="secondary" onPress={() => {
             updateLikesCount(videoId, !liked);
           }}>
-            <AwesomeButton type="secondary">
-              <FontAwesomeIcon icon={faThumbsUp} />
-            </AwesomeButton>
-          </a>
+            <FontAwesomeIcon icon={faThumbsUp} />
+          </AwesomeButton>
         </Row>
       </Col>
     </Container>
