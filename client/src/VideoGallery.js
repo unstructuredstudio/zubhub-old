@@ -75,10 +75,10 @@ function VideoGallery() {
           <Col>
             <p className="video-url">
               <AwesomeButton type="secondary" onPress={() => history.push(
-                '/project/' + id,
-                {video: video},
-                {likes: likesData},
-                )}>
+                  '/project/' + id,
+                  {video: video},
+                  {likes: likesData},
+              )}>
                 <FontAwesomeIcon icon={faExternalLinkAlt} />
                 View Project
               </AwesomeButton>
@@ -97,7 +97,8 @@ function VideoGallery() {
             Projects
           </div>
           <div className="sub-title">
-            <DropdownButton id="category-list" class="shadow-none" title="Category">
+            <DropdownButton id="category-list" className="shadow-none"
+              title="Category">
               <Dropdown.Item href="/">All Categories</Dropdown.Item>
               {categoryList.map((category) => (
                 <Dropdown.Item key={'dropdownitem-' + category}
