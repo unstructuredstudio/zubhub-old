@@ -16,7 +16,7 @@ function VideoGallery() {
   const [categoryName, setCategoryName] = useState(name?name:null);
   const [videos, setVideos] = useState(null);
   const [likes, setLikes] = useState(null);
-  const categoryList = ['Toys', 'Art', 'Stories', 'Science', 'Buildings',
+  const categoryList = ['Toys', 'Art', 'Stories', 'Science', 'Structures',
     'Music', 'Games', 'Electronics', 'Robotics', 'Coding', 'Animations',
     'Mechanical'];
 
