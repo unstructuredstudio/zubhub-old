@@ -5,8 +5,7 @@ import Likes from './Likes';
 import {useParams} from 'react-router-dom';
 import {Row, Container, Col, Dropdown, DropdownButton} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faExternalLinkAlt, faEye}
-  from '@fortawesome/free-solid-svg-icons';
+import {faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 import {AwesomeButton} from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import './VideoGallery.css';
@@ -75,13 +74,13 @@ function VideoGallery() {
           </Col>
           <Col>
             <p className="video-url">
-              <AwesomeButton type="secondary">
+              <AwesomeButton type="secondary" onPress={() => history.push(
+                '/project/' + id,
+                {video: video},
+                {likes: likesData},
+                )}>
                 <FontAwesomeIcon icon={faExternalLinkAlt} />
-                <a onClick={() => history.push(
-                    '/project/' + id,
-                    {video: video},
-                    {likes: likesData},
-                )}> View Project </a>
+                View Project
               </AwesomeButton>
             </p>
           </Col>
