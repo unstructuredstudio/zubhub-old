@@ -4,7 +4,8 @@ import {useForm} from 'react-hook-form';
 import videoService from './services/videoService';
 import {AwesomeButton} from 'react-awesome-button';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCommentAlt, faComments} from '@fortawesome/free-solid-svg-icons';
+import {faCommentAlt, faComments, faExclamationCircle}
+  from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import {format} from 'date-fns';
 
@@ -47,6 +48,16 @@ function Comments(props) {
               />
             </Col>
           </Row>
+          <Row>
+            <Col xs="12">
+              {errors.postedby && errors.postedby.type === 'required' &&
+              <p><FontAwesomeIcon icon={faExclamationCircle} /> You missed the
+              username, it is required to post a comment.</p>}
+              {errors.postedby && errors.postedby.type === 'maxLength' &&
+              <p><FontAwesomeIcon icon={faExclamationCircle} /> Username seems
+              too long, make it shorter.</p>}
+            </Col>
+          </Row>
           <Row className="comment-input">
             <textarea
               type="text"
@@ -66,11 +77,9 @@ function Comments(props) {
               </AwesomeButton>
             </Col>
             <Col xs="6" className="chars-box">
-              <p>{charsLeft} chars left</p>
-              {errors.comment && errors.comment.type === 'required' &&
-            <span>This is required</span>}
-              {errors.comment && errors.comment.type === 'maxLength' &&
-            <span>Max length exceeded</span> }
+              {errors.description && errors.description.type === 'required' &&
+            <p><FontAwesomeIcon icon={faExclamationCircle} /> You missed adding
+            a comment. </p>}<p>{charsLeft} chars left</p>
             </Col>
           </Row>
         </div>
