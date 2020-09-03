@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
+    "consolidate": "^0.15.1",
     "dotenv": "^8.2.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-plugin-flowtype": "^4.6.0",
@@ -28,10 +29,12 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "history": "^4.10.1",
+    "http-proxy-middleware": "^1.0.5",
     "react-awesome-button": "^6.5.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-hook-form": "^5.7.1",
     "react-router-dom": "^5.1.2",
+    "swig": "^1.4.2",
     "vimeo": "^2.1.1"
   },
   "devDependencies": {
