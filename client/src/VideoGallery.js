@@ -16,9 +16,11 @@ function VideoGallery() {
   const [categoryName, setCategoryName] = useState(name?name:null);
   const [videos, setVideos] = useState(null);
   const [likes, setLikes] = useState(null);
-  const categoryList = ['Toys', 'Art', 'Stories', 'Science', 'Structures',
-    'Music', 'Games', 'Electronics', 'Robotics', 'Coding', 'Animations',
-    'Mechanical'];
+
+  const categoryList = ['Toys', 'Science', 'Structures', 'Mechanical'];
+  // const categoryList = ['Toys', 'Art', 'Stories', 'Science', 'Structures',
+  //   'Music', 'Games', 'Electronics', 'Robotics', 'Coding', 'Animations',
+  //   'Mechanical'];
 
   useEffect(() => {
     if (!videos) {
@@ -64,7 +66,7 @@ function VideoGallery() {
       <div key={id} className="video-item">
         <div style={videoBg}>
           <iframe title="vimeo-player" className="vimeo-player"
-            src={'https://player.vimeo.com/video/' + id + '?color=ffcc00'}
+            src={'https://player.vimeo.com/video/' + id + '?byline=0&title=0&portrait=0'}
             frameBorder="0">
           </iframe>
         </div>
