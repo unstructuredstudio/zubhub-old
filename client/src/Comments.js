@@ -84,7 +84,7 @@ function Comments(props) {
           </Row>
         </div>
         {(newComments!= null && newComments.length > 0) ? (
-        newComments.map((item, index) => {
+        newComments.slice(0).reverse().map((item, index) => {
           const formattedDate = format(new Date(item.postedago),
               'dd MMM yyyy HH:mm a');
           return <Row key={'comment-row-' + index}>
