@@ -53,7 +53,7 @@ function VideoGallery() {
 
   const videoBg = {
     backgroundColor: 'black',
-    height: '80%',
+    height: '71%',
     width: '100%',
     marginBottom: 10,
   };
@@ -66,10 +66,11 @@ function VideoGallery() {
       <div key={id} className="video-item">
         <div style={videoBg}>
           <iframe title="vimeo-player" className="vimeo-player"
-            src={'https://player.vimeo.com/video/' + id + '?byline=0&title=0&portrait=0'}
+            src={'https://player.vimeo.com/video/' + id + '?byline=0&portrait=0&title=0'}
             frameBorder="0">
           </iframe>
         </div>
+        <div className="video-title">{video.name}</div>
         <Row>
           <Col>
             <Likes videoId={id} likesObj={[likesData]}></Likes>

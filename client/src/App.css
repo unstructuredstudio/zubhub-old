@@ -103,8 +103,8 @@ body {
 
 .video-item {
   float: left;
-  width: 500px;
-  height: 360px;
+  width: 470px;
+  height: 385px;
   margin: calc(10px + 3vh);
   background-color: #fc0;
   border: 10px solid #fc0;
@@ -124,6 +124,16 @@ padding-right: unset;
 .video-item .container {
 padding-left: unset;
 padding-right: unset;
+}
+
+.video-title {
+  white-space: nowrap;
+  width: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  font-size: calc(10px + 1vmin);
+  font-weight: 800;
 }
 
 .video-url {
