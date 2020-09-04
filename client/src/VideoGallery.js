@@ -53,7 +53,7 @@ function VideoGallery() {
 
   const videoBg = {
     backgroundColor: 'black',
-    height: '71%',
+    height: '70%',
     width: '100%',
     marginBottom: 10,
   };
